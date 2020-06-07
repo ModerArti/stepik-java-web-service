@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 
 public class Main {
 
+    private static final Logger LOGGER = Logger.getLogger(Main.class.toString());
+
     public static void main(String[] args) throws Exception {
         KeyValueServlet servlet = new KeyValueServlet();
 
@@ -22,7 +24,7 @@ public class Main {
         server.setHandler(context);
 
         server.start();
-        Logger.getGlobal().info("Server started");
+        LOGGER.info("Server started");
         server.join();
     }
 
