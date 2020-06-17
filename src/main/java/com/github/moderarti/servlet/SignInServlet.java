@@ -19,13 +19,13 @@ public class SignInServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
-        String password = req.getParameter("pass");
+        String password = req.getParameter("password");
 
         UserProfile user;
         if ((user = accountService.getUserByLogin(login)) != null) {
             if (user.getPassword().equals(password)) {
                 resp.setStatus(HttpServletResponse.SC_OK);
-                resp.getWriter().println("Authorized: login");
+                resp.getWriter().println("Authorized: " + login);
             }
         } else {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

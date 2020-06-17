@@ -20,8 +20,8 @@ public class Main {
 
     private static Map<HttpServlet, String> getServletsAndPages(AccountService accountService) {
         Map<HttpServlet, String> servlets = new HashMap<>();
-        servlets.put(new SignUpServlet(accountService), "signup");
-        servlets.put(new SignInServlet(accountService), "signin");
+        servlets.put(new SignUpServlet(accountService), "/signup");
+        servlets.put(new SignInServlet(accountService), "/signin");
         return servlets;
     }
 

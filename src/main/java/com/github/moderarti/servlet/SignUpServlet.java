@@ -18,7 +18,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         String login = req.getParameter("login");
-        String password = req.getParameter("pass");
+        String password = req.getParameter("password");
 
         if (accountService.getUserByLogin(login) == null && password != null) {
             UserProfile newUser = new UserProfile(login, password);
