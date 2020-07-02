@@ -34,7 +34,7 @@ public class Main {
             context.addServlet(new ServletHolder(servletAndPage.getKey()), servletAndPage.getValue());
         }
 
-        int numberOfPort = Integer.parseInt(PropertiesHandler.getProperty(PropertiesENUM.PORT));
+        int numberOfPort = Integer.parseInt(PropertiesHandler.getProperty(PropertiesENUM.SERVER_PORT));
         Server server = new Server(numberOfPort);
         server.setHandler(context);
 
