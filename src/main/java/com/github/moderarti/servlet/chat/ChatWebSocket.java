@@ -25,7 +25,7 @@ public class ChatWebSocket {
         try {
             session.getRemote().sendString(data);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.severe(e.getMessage());
         }
     }
 
