@@ -61,6 +61,12 @@
       <artifactId>h2</artifactId>
       <version>1.4.200</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-servlet -->
+    <dependency>
+      <groupId>org.eclipse.jetty.websocket</groupId>
+      <artifactId>websocket-servlet</artifactId>
+      <version>9.4.30.v20200611</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -107,9 +113,7 @@
         </plugin>
         <!-- jar with dependencies -->
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>3.3.0</version>
           <configuration>
             <descriptorRefs>
               <descriptorRef>jar-with-dependencies</descriptorRef>
