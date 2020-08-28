@@ -1,4 +1,4 @@
-package com.github.moderarti.servlet;
+package com.github.moderarti.servlet.user;
 
 import com.github.moderarti.accounts.AccountService;
 import com.github.moderarti.accounts.UserProfile;;
