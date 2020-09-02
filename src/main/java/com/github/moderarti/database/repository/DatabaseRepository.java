@@ -1,6 +1,6 @@
 package com.github.moderarti.database.repository;
 
-import com.github.moderarti.accounts.UserProfile;
+import com.github.moderarti.models.accounts.UserProfile;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;

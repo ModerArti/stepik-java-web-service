@@ -1,7 +1,7 @@
 package com.github.moderarti;
 
-import com.github.moderarti.accounts.AccountService;
-import com.github.moderarti.accounts.AccountServiceMBean;
+import com.github.moderarti.models.accounts.AccountService;
+import com.github.moderarti.models.accounts.AccountServiceMBean;
 import com.github.moderarti.property.PropertiesENUM;
 import com.github.moderarti.property.PropertiesHandler;
 import com.github.moderarti.servlet.admin.AdminServlet;
