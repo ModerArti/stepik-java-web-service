@@ -5,9 +5,9 @@ import com.github.moderarti.database.service.DatabaseService;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccountService {
+public class AccountService implements AccountServiceMBean {
 
-    private Map<String, UserProfile> loginToProfile = new HashMap<>();
+    private int usersLimit = 10;
     private Map<String, UserProfile> sessionIdToProfile = new HashMap<>();
     private DatabaseService service = new DatabaseService();
 
@@ -29,4 +29,11 @@ public class AccountService {
         return sessionIdToProfile.get(sessionId);
     }
 
+    public int getUsersLimit() {
+        return usersLimit;
+    }
+
+    public void setUsersLimit(int usersLimit) {
+        this.usersLimit = usersLimit;
+    }
 }
