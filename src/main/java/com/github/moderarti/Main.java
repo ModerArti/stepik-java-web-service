@@ -1,8 +1,10 @@
 package com.github.moderarti;
 
 import com.github.moderarti.accounts.AccountService;
+import com.github.moderarti.accounts.AccountServiceMBean;
 import com.github.moderarti.property.PropertiesENUM;
 import com.github.moderarti.property.PropertiesHandler;
+import com.github.moderarti.servlet.admin.AdminServlet;
 import com.github.moderarti.servlet.chat.WebSocketChatServlet;
 import com.github.moderarti.servlet.user.SignInServlet;
 import com.github.moderarti.servlet.user.SignUpServlet;
@@ -11,7 +13,10 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 import javax.servlet.http.HttpServlet;
+import java.lang.management.ManagementFactory;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -25,6 +30,7 @@ public class Main {
         servlets.put(new SignUpServlet(accountService), "/signup");
         servlets.put(new SignInServlet(accountService), "/signin");
         servlets.put(new WebSocketChatServlet(), "/chat");
+        servlets.put(new AdminServlet(accountService), "/admin");
         return servlets;
     }
 
@@ -32,6 +38,11 @@ public class Main {
         PropertyConfigurator.configure("src/main/resources/log4j.properties");
 
         AccountService accountService = new AccountService();
+        AccountServiceMBean serverStatistics = accountService;
+        MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
+        ObjectName name = new ObjectName("Admin:type=AccountService.usersLimit");
+        mbs.registerMBean(serverStatistics, name);
+
         Map<HttpServlet, String> servletsAndPages = getServletsAndPages(accountService);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
