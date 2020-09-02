@@ -3,8 +3,10 @@ package com.github.moderarti;
 import com.github.moderarti.accounts.AccountService;
 import com.github.moderarti.property.PropertiesENUM;
 import com.github.moderarti.property.PropertiesHandler;
-import com.github.moderarti.servlet.SignInServlet;
-import com.github.moderarti.servlet.SignUpServlet;
+import com.github.moderarti.servlet.chat.WebSocketChatServlet;
+import com.github.moderarti.servlet.user.SignInServlet;
+import com.github.moderarti.servlet.user.SignUpServlet;
+import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -22,10 +24,13 @@ public class Main {
         Map<HttpServlet, String> servlets = new HashMap<>();
         servlets.put(new SignUpServlet(accountService), "/signup");
         servlets.put(new SignInServlet(accountService), "/signin");
+        servlets.put(new WebSocketChatServlet(), "/chat");
         return servlets;
     }
 
     public static void main(String[] args) throws Exception {
+        PropertyConfigurator.configure("src/main/resources/log4j.properties");
+
         AccountService accountService = new AccountService();
         Map<HttpServlet, String> servletsAndPages = getServletsAndPages(accountService);
 
@@ -33,7 +38,6 @@ public class Main {
         for (Map.Entry<HttpServlet, String> servletAndPage : servletsAndPages.entrySet()) {
             context.addServlet(new ServletHolder(servletAndPage.getKey()), servletAndPage.getValue());
         }
-
         int numberOfPort = Integer.parseInt(PropertiesHandler.getProperty(PropertiesENUM.SERVER_PORT));
         Server server = new Server(numberOfPort);
         server.setHandler(context);
