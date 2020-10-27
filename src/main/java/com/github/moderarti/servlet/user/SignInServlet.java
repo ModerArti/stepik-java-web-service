@@ -1,7 +1,7 @@
 package com.github.moderarti.servlet.user;
 
-import com.github.moderarti.accounts.AccountService;
-import com.github.moderarti.accounts.UserProfile;;
+import com.github.moderarti.models.accounts.AccountService;
+import com.github.moderarti.models.accounts.UserProfile;;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

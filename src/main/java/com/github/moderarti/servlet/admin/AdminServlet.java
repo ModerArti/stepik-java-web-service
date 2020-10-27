@@ -1,6 +1,6 @@
 package com.github.moderarti.servlet.admin;
 
-import com.github.moderarti.accounts.AccountService;
+import com.github.moderarti.models.accounts.AccountService;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

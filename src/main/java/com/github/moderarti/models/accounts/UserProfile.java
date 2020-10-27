@@ -1,4 +1,4 @@
-package com.github.moderarti.accounts;
+package com.github.moderarti.models.accounts;
 
 import javax.persistence.*;
 import java.io.Serializable;
