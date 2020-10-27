@@ -1,6 +1,6 @@
 package com.github.moderarti.database.service;
 
-import com.github.moderarti.accounts.UserProfile;
+import com.github.moderarti.models.accounts.UserProfile;
 import com.github.moderarti.database.repository.DatabaseRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
